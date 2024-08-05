@@ -246,7 +246,11 @@ class ObjectUrdfBuilder:
         rel = os.path.join(filename.replace(common,''))
         if rel[0]==os.path.sep:
             rel = rel[1:] 
-        name= rel.split(os.path.sep)[0]
+        
+        # Get the file name and then split the extension from it
+        name = rel.split(os.path.sep)[-1]
+        name = os.path.splitext(name)[0]
+
         rel = rel.replace(os.path.sep,'/')
 
         file_name_raw, file_extension = os.path.splitext(filename)
